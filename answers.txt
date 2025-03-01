@@ -1,0 +1,27 @@
+1. What happens if the user selects "Cancel"?
+If the user selects "Cancel" in JOptionPane.showConfirmDialog, the variable option will receive the value JOptionPane.CANCEL_OPTION (which is an integer constant with a value of 2). Therefore, if the user clicks "Cancel", the program will display "No".
+
+2. How to customize the options for the user?
+To customize the options for the user, use the method JOptionPane.showOptionDialog() with the following parameters:
+(Component parentComponent, Object message, String title, int optionType, int messageType, Icon icon, Object[] options, Object initialValue).
+- "Yes", "No" options:
+Object[] options = {"Yes", "No"};
+int option = JOptionPane.showOptionDialog(null, 
+        "Do you want to change to the first-class ticket?", 
+        "Choose an option", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.QUESTION_MESSAGE, 
+        null, options, options[0]);
+
+JOptionPane.showMessageDialog(null, "You've chosen: " + (option == 0 ? "Yes" : "No"));
+
+- "I do" and "I don't" options:
+Object[] options = {"I do", "I don't"};
+int option = JOptionPane.showOptionDialog(null, 
+        "Do you want to change to the first-class ticket?", 
+        "Choose an option", 
+        JOptionPane.YES_NO_OPTION, 
+        JOptionPane.QUESTION_MESSAGE, 
+        null, options, options[0]);
+
+JOptionPane.showMessageDialog(null, "You've chosen: " + (option == 0 ? "I do" : "I don't"));
