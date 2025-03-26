@@ -1,5 +1,4 @@
-Question: If you create a constructor method to build a DVD by title then create a constructor method to build
-a DVD by category. Does JAVA allow you to do this?
+Question: If you create a constructor method to build a DVD by title then create a constructor method to build a DVD by category. Does JAVA allow you to do this?
 
 
 Answer: Yes, JAVA allows you to create multiple constructors in a class, a concept known as constructor overloading. This works because each constructor has a different parameter list, allowing JAVA to differentiate between them. For  example in the exercise "Overloaded Constructors in DigitalVideoDisc": 
@@ -14,3 +13,18 @@ Answer: JAVA is strictly pass-by-value.
 
 When passing objects, Java passes the reference by value, which means the reference itself is copied, so any changes to the reference inside the method do not affect the original reference. However, modifications to the object itself are reflected outside the method because both the original and copied references point to the same object.
 
+
+Question:After the call of swap(jungleDVD, cinderellaDVD) why does the title of these two objects still remain?
+
+
+Answer: When swap(jungleDVD, cinderellaDVD) is called, Java passes copies of the references to the method. 
+Inside the swap() method, o1 and o2 are local variables that hold copies of the references to the original objects. Swapping o1 and o2 only affects the local copies, not the actual jungleDVD and cinderellaDVD references in main(). When the method ends, the original jungleDVD and cinderellaDVD remain unchanged.
+
+
+Question: After the call of changeTitle(jungleDVD, cinderellaDVD.getTitle()) why is the title of the JungleDVD changed?
+
+
+Answer: Because the method modifies the actual object using its reference.
+When changeTitle(jungleDVD, cinderellaDVD.getTitle()) is called, the reference to jungleDVD is passed by value. Inside changeTitle(), dvd still points to the same object in memory. 
+dvd.setTitle(title); modifies the same object in memory, so jungleDVD's title changes. However, the statement 
+dvd = new DigitalVideoDisc(oldTitle); creates a new DVD object, but this only affects the local reference dvd, not the original jungleDVD reference in main(). After changeTitle() completes, jungleDVD remains modified but still refers to the same object.
