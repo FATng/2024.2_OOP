@@ -1,0 +1,26 @@
+Q: What class should implement the Comparable interface?
+
+A: The Media class should implement Comparable<Media> since it’s the base class for all media types in the cart.
+
+
+Q: How should you implement the compareTo() method?
+
+A: In Media, implement compareTo to sort by title alphabetically, then by cost in descending order for equal titles:
+
+Compare title using title.compareTo(other.title).
+If titles are equal, compare cost using Float.compare(other.cost, this.cost).
+
+
+Q: Can we have two ordering rules (by title then cost and by cost then title) with Comparable?
+
+A: No, Comparable supports only one natural ordering via compareTo. For multiple orderings (e.g., by cost then title), use Comparator instead.
+
+
+Q: How to modify for DVDs with ordering by title, then decreasing length, then cost?
+
+A: Override compareTo in the DigitalVideoDisc subclass:
+
+- Compare titles alphabetically.
+- If titles are equal, compare lengths in descending order (if the other object is a DVD).
+- If lengths are equal (or the other isn’t a DVD), compare costs in descending order.
+Alternatively, use a Comparator for DVD-specific ordering to avoid mixed-list issues.
